@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Music Therapy Player</title>
+
+    <style>
+        /* Position the home link at the top right corner */
+        .home-link {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+
+    <!-- Music Therapy Player Content -->
+    <h1>Music Therapy Player</h1>
+
+    <!-- Audio Player -->
+    <audio id="audioPlayer" controls style="width: 100%;">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- List of Songs -->
+    <ul>
+        {% for song in songs %}
+            <li>
+                <a href="#" onclick="playSong('{{ emotion }}', '{{ song }}')">{{ song }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <!-- Home Page Link -->
+    <p class="home-link"><a href="/">Home</a></p>
+
+    <!-- JavaScript -->
+    <script>
+        // Function to play a song
+        function playSong(emotion, songName) {
+            const audioPlayer = document.getElementById('audioPlayer');
+            const songUrl = `/music_list/song/${emotion}/${songName}`;
+            
+            audioPlayer.src = songUrl;
+            audioPlayer.play();
+        }
+
+    </script>
+</body>
+</html>
